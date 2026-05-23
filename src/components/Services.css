@@ -1,0 +1,124 @@
+.services {
+  background: var(--cream);
+  padding: 100px 24px;
+  position: relative;
+}
+
+.services-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.services-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--dark);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.services-sub {
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: rgba(10,10,10,0.55);
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  background: var(--dark);
+  border: 1px solid rgba(46,204,113,0.12);
+  border-radius: 20px;
+  padding: 36px 28px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-num {
+  font-family: var(--font-display);
+  font-size: 72px;
+  color: rgba(46, 204, 113, 0.08);
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  line-height: 1;
+  user-select: none;
+}
+
+.service-icon {
+  margin-bottom: 20px;
+  width: 56px;
+  height: 56px;
+  background: rgba(46, 204, 113, 0.08);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-name {
+  font-family: var(--font-nunito);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.service-desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.service-link {
+  color: var(--green);
+  font-family: var(--font-nunito);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: gap 0.2s, opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.service-link:hover {
+  opacity: 0.8;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .services-grid { grid-template-columns: 1fr; }
+}

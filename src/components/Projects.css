@@ -1,0 +1,169 @@
+.projects {
+  background: var(--dark);
+  padding: 100px 24px;
+  position: relative;
+}
+
+.projects-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.projects-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.projects-sub {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* Bento Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  gap: 16px;
+}
+
+.project-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-large {
+  grid-column: span 7;
+  grid-row: span 2;
+  min-height: 380px;
+}
+
+.project-small {
+  grid-column: span 5;
+  min-height: 180px;
+}
+
+.project-medium {
+  grid-column: span 6;
+  min-height: 220px;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  transition: transform 0.5s ease;
+  position: relative;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.04);
+}
+
+.project-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(46,204,113,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,204,113,0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-card:hover .project-grid-overlay {
+  opacity: 1;
+}
+
+.project-label-top {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+}
+
+.project-cat {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(46,204,113,0.25);
+  color: var(--green);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+/* Hover overlay */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 30%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-num {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 80px;
+  color: rgba(46,204,113,0.15);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.project-name {
+  font-family: var(--font-nunito);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.project-tag {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--green);
+  font-weight: 500;
+}
+
+.project-arrow {
+  font-size: 24px;
+  color: var(--green);
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+  .project-large { grid-column: span 12; min-height: 280px; }
+  .project-small { grid-column: span 12; min-height: 180px; }
+  .project-medium { grid-column: span 12; min-height: 200px; }
+}
+
+@media (max-width: 640px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}
