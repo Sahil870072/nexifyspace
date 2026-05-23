@@ -37,8 +37,8 @@
   height: auto;
   max-height: 60px;
   object-fit: contain;
-  object-position: left center; /* Forces the image to hug the left edge */
-  filter: brightness(0) invert(1);
+  object-position: left center;
+  /* Forces the image to hug the left edge */
   transform: scale(2);
   transform-origin: left center;
   transition: opacity 0.2s ease, transform 0.2s ease;
