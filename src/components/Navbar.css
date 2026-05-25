@@ -33,17 +33,20 @@
 }
 
 .nav-logo-img {
-  width: 140px;                  /* FIX: real width, not scale(2) hack */
+  width: 140px;
   height: auto;
   max-height: 48px;
   object-fit: contain;
   object-position: left center;
   display: block;
-  transition: opacity 0.2s ease;
+  transform: scale(2);
+  transform-origin: left center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .nav-logo:hover .nav-logo-img {
   opacity: 0.8;
+  transform: scale(2.05);
 }
 
 /* Links */
