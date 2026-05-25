@@ -106,6 +106,55 @@
   color: var(--green);
 }
 
+/* Clickable info values */
+.info-link {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 700;
+  font-family: var(--font-nunito);
+  font-size: 15px;
+}
+
+.info-link:hover {
+  color: var(--green);
+}
+
+/* WhatsApp button */
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 24px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.25);
+  width: fit-content;
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 32px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-alt {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.whatsapp-success {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* Form */
 .contact-form-wrap {
   background: rgba(255,255,255,0.03);
@@ -206,6 +255,54 @@
   font-size: 16px;
   padding: 16px 40px;
   box-shadow: 0 0 40px rgba(46,204,113,0.2);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Form actions row */
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Error message */
+.form-error {
+  color: #ff6b6b;
+  font-family: var(--font-body);
+  font-size: 13px;
+  background: rgba(255, 107, 107, 0.08);
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  border-radius: 10px;
+  padding: 10px 16px;
+}
+
+/* Loading spinner */
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0,0,0,0.3);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success actions */
+.success-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* Success state */
