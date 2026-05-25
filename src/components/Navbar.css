@@ -33,12 +33,12 @@
 }
 
 .nav-logo-img {
-  width: 200px;
+  width: 140px;
   height: auto;
-  max-height: 60px;
+  max-height: 48px;
   object-fit: contain;
   object-position: left center;
-  /* Forces the image to hug the left edge */
+  display: block;
   transform: scale(2);
   transform-origin: left center;
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -67,13 +67,21 @@
   cursor: pointer;
   padding: 6px 14px;
   border-radius: 50px;
+  text-decoration: none;         /* ← removes any underline */
   transition: color 0.2s, background 0.2s;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+/* Active: only colour change — no underline, no pill background */
 .nav-link.active {
   color: var(--green);
-  background: rgba(46, 204, 113, 0.08);
+  background: none;
+  text-decoration: none;
 }
 
 /* Hamburger */
