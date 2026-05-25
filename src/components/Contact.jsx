@@ -6,8 +6,8 @@ import './Contact.css';
 const WHATSAPP_NUMBER = '918130638410';
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20NexifySpace!%20I%20want%20to%20discuss%20a%20project.`;
 
-// 🔑 PASTE YOUR WEB3FORMS KEY HERE (get it FREE at https://web3forms.com → enter sahil870072@gmail.com)
-const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
+// 🔑 Web3Forms access key — delivers to sahil870072@gmail.com
+const WEB3FORMS_ACCESS_KEY = 'bd69ce51-f9d3-4775-83cf-b8a8ff43306e';
 
 const serviceOptions = [
   'Web Development', 'UI/UX Design', 'SEO & Growth',
