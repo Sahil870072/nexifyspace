@@ -3,12 +3,11 @@ import { motion, useInView } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, CheckCircle, Send, MessageCircle } from 'lucide-react';
 import './Contact.css';
 
-const WHATSAPP_NUMBER = '918130638410'; // +91 8130638410
+const WHATSAPP_NUMBER = '918130638410';
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20NexifySpace!%20I%20want%20to%20discuss%20a%20project.`;
 
-// ✅ Get your FREE Web3Forms access key at https://web3forms.com/
-// Enter sahil870072@gmail.com → they'll email you the key → paste it below
-const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
+// 🔑 PASTE YOUR WEB3FORMS KEY HERE (get it FREE at https://web3forms.com → enter sahil870072@gmail.com)
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
 
 const serviceOptions = [
   'Web Development', 'UI/UX Design', 'SEO & Growth',
@@ -59,6 +58,12 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
     setError('');
+
+    if (!WEB3FORMS_ACCESS_KEY) {
+      setError('Form not configured yet. Please add your Web3Forms key in the .env file.');
+      setLoading(false);
+      return;
+    }
 
     const payload = {
       access_key: WEB3FORMS_ACCESS_KEY,
@@ -163,6 +168,18 @@ export default function Contact() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
+            {/* Setup banner — only visible when key is missing */}
+            {!WEB3FORMS_ACCESS_KEY && (
+              <div className="setup-banner">
+                <span className="setup-icon">🔑</span>
+                <div>
+                  <strong>One-time setup needed:</strong> Go to{' '}
+                  <a href="https://web3forms.com" target="_blank" rel="noopener noreferrer">web3forms.com</a>,
+                  enter <code>sahil870072@gmail.com</code>, copy the access key and add it to your{' '}
+                  <code>.env</code> file as <code>VITE_WEB3FORMS_KEY=your_key_here</code>, then redeploy.
+                </div>
+              </div>
+            )}
             {submitted ? (
               <div className="form-success">
                 <div className="success-icon">
