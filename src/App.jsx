@@ -1,28 +1,29 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Projects from './components/Projects';
-import About from './components/About';
-import Marquee from './components/Marquee';
-import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import HomePage from './pages/HomePage';
+import ServicesPage from './pages/ServicesPage';
+import ProjectsPage from './pages/ProjectsPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <main>
-        <Hero />
-        <Services />
-        <Projects />
-        <Marquee />
-        <About />
-        <Testimonials />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </main>
-      <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

@@ -70,7 +70,8 @@
   transition: color 0.2s, background 0.2s;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
   color: var(--green);
   background: rgba(46, 204, 113, 0.08);
 }
@@ -130,7 +131,8 @@
   transition: color 0.2s;
 }
 
-.mobile-link:hover {
+.mobile-link:hover,
+.mobile-link.active {
   color: var(--green);
 }
 

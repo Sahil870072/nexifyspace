@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './Hero.css';
 
@@ -34,6 +35,7 @@ function StatCounter({ target, suffix = '+', label }) {
 }
 
 export default function Hero() {
+  const navigate = useNavigate();
   return (
     <section className="hero" id="hero">
       {/* Ambient glow orbs */}
@@ -78,13 +80,13 @@ export default function Hero() {
         >
           <button
             className="btn-primary hero-btn"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => navigate('/contact')}
           >
             Start a Project →
           </button>
           <button
             className="btn-ghost"
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => navigate('/projects')}
           >
             View Our Work ↓
           </button>

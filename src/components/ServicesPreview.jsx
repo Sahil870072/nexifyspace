@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
-import './Services.css';
+import './ServicesPreview.css';
 
 const services = [
   {
@@ -15,8 +15,7 @@ const services = [
       </svg>
     ),
     title: 'Web Development',
-    desc: 'Blazing-fast, pixel-perfect websites and web apps built with modern stacks. React, Next.js, and beyond.',
-    rotate: '-1deg',
+    desc: 'Blazing-fast, pixel-perfect websites and web apps built with modern stacks.',
   },
   {
     num: '02',
@@ -28,8 +27,7 @@ const services = [
       </svg>
     ),
     title: 'UI/UX Design',
-    desc: 'Experiences that convert and delight. From wireframes to high-fidelity prototypes that wow.',
-    rotate: '1deg',
+    desc: 'Experiences that convert and delight. From wireframes to high-fidelity prototypes.',
   },
   {
     num: '03',
@@ -43,8 +41,7 @@ const services = [
       </svg>
     ),
     title: 'SEO & Growth',
-    desc: 'Data-driven SEO strategies and growth hacking that puts you at the top of every search.',
-    rotate: '-1deg',
+    desc: 'Data-driven SEO strategies that put you at the top of every search result.',
   },
   {
     num: '04',
@@ -55,68 +52,54 @@ const services = [
       </svg>
     ),
     title: 'Motion Design',
-    desc: 'Animations and micro-interactions that breathe life into your brand and stop the scroll.',
-    rotate: '1.5deg',
+    desc: 'Animations that breathe life into your brand and stop the scroll cold.',
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 50, rotate: 0 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    rotate: services[i]?.rotate || '0deg',
-    transition: { delay: i * 0.12, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-};
-
-export default function Services() {
+export default function ServicesPreview() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className="services" id="services">
-      <div className="services-inner">
+    <section className="services-preview" ref={ref}>
+      <div className="sp-inner">
         <motion.div
-          className="services-header"
-          ref={ref}
+          className="sp-header"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="section-tag">What We Do</span>
-          <h2 className="services-title">
-            Services Built for{' '}
-            <span className="green animated-underline" style={inView ? { '--w': '100%' } : {}}>
-              Impact
-            </span>
-          </h2>
-          <p className="services-sub">
-            We craft digital products that don't just look good — they grow businesses.
-          </p>
+          <h2 className="sp-title">Services Built for <span className="green">Impact.</span></h2>
+          <p className="sp-sub">We craft digital products that don't just look good — they grow businesses.</p>
         </motion.div>
 
-        <div className="services-grid">
+        <div className="sp-grid">
           {services.map((s, i) => (
             <motion.div
               key={s.num}
-              className="service-card"
-              custom={i}
-              initial="hidden"
-              animate={inView ? 'visible' : 'hidden'}
-              variants={cardVariants}
-              whileHover={{ rotate: '0deg', y: -6, boxShadow: '0 20px 60px rgba(46,204,113,0.15)' }}
+              className="sp-card"
+              initial={{ opacity: 0, y: 40 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              whileHover={{ y: -6, boxShadow: '0 20px 60px rgba(46,204,113,0.12)' }}
             >
-              <div className="service-num">{s.num}</div>
-              <div className="service-icon">{s.icon}</div>
-              <h3 className="service-name">{s.title}</h3>
-              <p className="service-desc">{s.desc}</p>
-              <Link to="/contact" className="service-link">
-                Explore →
-              </Link>
+              <div className="sp-num">{s.num}</div>
+              <div className="sp-icon">{s.icon}</div>
+              <h3 className="sp-name">{s.title}</h3>
+              <p className="sp-desc">{s.desc}</p>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          className="sp-cta"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
+          <Link to="/services" className="btn-primary">See All Services →</Link>
+        </motion.div>
       </div>
     </section>
   );

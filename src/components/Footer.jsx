@@ -1,17 +1,29 @@
+import { Link } from 'react-router-dom';
 import mainLogo from '../assets/NexifySpace Main Logo Png (1).png';
 import './Footer.css';
 
 const footerLinks = {
-  Services: ['Web Development', 'UI/UX Design', 'SEO & Growth', 'Motion Design'],
-  Company: ['About Us', 'Our Work', 'Testimonials', 'Careers'],
-  Connect: ['Twitter', 'Instagram', 'LinkedIn', 'Dribbble'],
+  Services: [
+    { label: 'Web Development', to: '/services' },
+    { label: 'UI/UX Design', to: '/services' },
+    { label: 'SEO & Growth', to: '/services' },
+    { label: 'Motion Design', to: '/services' },
+  ],
+  Company: [
+    { label: 'About Us', to: '/about' },
+    { label: 'Our Work', to: '/projects' },
+    { label: 'Meet the Team', to: '/about' },
+    { label: 'Contact', to: '/contact' },
+  ],
+  Connect: [
+    { label: 'Twitter', to: '#' },
+    { label: 'Instagram', to: '#' },
+    { label: 'LinkedIn', to: '#' },
+    { label: 'Dribbble', to: '#' },
+  ],
 };
 
 export default function Footer() {
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <footer className="footer">
       <div className="footer-green-line" />
@@ -19,9 +31,9 @@ export default function Footer() {
         <div className="footer-top">
           {/* Brand */}
           <div className="footer-brand">
-            <div className="footer-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <Link to="/" className="footer-logo">
               <img src={mainLogo} alt="NexifySpace" className="footer-logo-img" />
-            </div>
+            </Link>
             <p className="footer-tagline">
               Building digital futures for the boldest brands on the planet. No compromises. No excuses.
             </p>
@@ -37,14 +49,10 @@ export default function Footer() {
               <h4 className="footer-col-title">{col}</h4>
               <ul>
                 {links.map(link => (
-                  <li key={link}>
-                    <a href="#" className="footer-link" onClick={(e) => {
-                      e.preventDefault();
-                      if (col === 'Services') scrollTo('services');
-                      else if (col === 'Company') scrollTo('about');
-                    }}>
-                      {link}
-                    </a>
+                  <li key={link.label}>
+                    <Link to={link.to} className="footer-link">
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -58,7 +66,7 @@ export default function Footer() {
             © 2025 NexifySpace. All rights reserved.
           </span>
           <span className="footer-made">
-            Made with ♥ by NexifySpace
+            Made with ♥ by <strong>Sahil Kumar</strong> &amp; <strong>Tushar Kumar</strong>
           </span>
         </div>
       </div>

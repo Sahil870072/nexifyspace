@@ -1,11 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
-import { motion, useSpring, useTransform } from 'framer-motion';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { motion, useSpring } from 'framer-motion';
 import mainLogo from '../assets/NexifySpace Main Logo Png (1).png';
 import './Navbar.css';
 
-const navLinks = ['Services', 'Projects', 'About', 'Testimonials', 'Contact'];
+const navLinks = [
+  { label: 'Services', to: '/services' },
+  { label: 'Projects', to: '/projects' },
+  { label: 'About', to: '/about' },
+  { label: 'Team', to: '/about#team' },
+  { label: 'Contact', to: '/contact' },
+];
 
-function MagneticButton({ children, onClick, className }) {
+function MagneticLink({ children, to, className }) {
   const ref = useRef(null);
   const x = useSpring(0, { stiffness: 200, damping: 18 });
   const y = useSpring(0, { stiffness: 200, damping: 18 });
@@ -24,33 +31,34 @@ function MagneticButton({ children, onClick, className }) {
   };
 
   return (
-    <motion.button
+    <motion.div
       ref={ref}
-      className={className}
-      onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ x, y }}
+      style={{ x, y, display: 'inline-block' }}
     >
-      {children}
-    </motion.button>
+      <NavLink
+        to={to}
+        className={({ isActive }) =>
+          `nav-link${isActive ? ' active' : ''}`
+        }
+      >
+        {children}
+      </NavLink>
+    </motion.div>
   );
 }
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  const scrollTo = (id) => {
-    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
-    setMenuOpen(false);
-  };
 
   return (
     <motion.nav
@@ -61,24 +69,22 @@ export default function Navbar() {
     >
       <div className="navbar-inner">
         {/* Logo */}
-        <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <div className="nav-logo" onClick={() => navigate('/')}>
           <img src={mainLogo} alt="NexifySpace" className="nav-logo-img" />
         </div>
 
         {/* Links */}
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
-            <li key={link}>
-              <MagneticButton onClick={() => scrollTo(link)} className="nav-link">
-                {link}
-              </MagneticButton>
+            <li key={link.label}>
+              <MagneticLink to={link.to}>{link.label}</MagneticLink>
             </li>
           ))}
         </ul>
 
         {/* CTA */}
         <div className="nav-cta">
-          <button className="btn-primary" onClick={() => scrollTo('Contact')}>
+          <button className="btn-primary" onClick={() => navigate('/contact')}>
             Start a Project →
           </button>
         </div>
@@ -95,11 +101,18 @@ export default function Navbar() {
       {menuOpen && (
         <div className="mobile-menu">
           {navLinks.map((link) => (
-            <button key={link} onClick={() => scrollTo(link)} className="mobile-link">
-              {link}
-            </button>
+            <NavLink
+              key={link.label}
+              to={link.to}
+              className={({ isActive }) =>
+                `mobile-link${isActive ? ' active' : ''}`
+              }
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </NavLink>
           ))}
-          <button className="btn-primary" onClick={() => scrollTo('Contact')}>
+          <button className="btn-primary" onClick={() => { navigate('/contact'); setMenuOpen(false); }}>
             Start a Project →
           </button>
         </div>
