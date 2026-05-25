@@ -38,9 +38,6 @@ export default function Hero() {
   const navigate = useNavigate();
   return (
     <section className="hero" id="hero">
-      {/* Ambient glow orbs */}
-      <div className="hero-glow hero-glow-1" />
-      <div className="hero-glow hero-glow-2" />
 
       <div className="hero-content">
         {/* <motion.div
@@ -57,9 +54,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.7 }}
         >
-          We Build The
-          <br />
-          <span className="headline-green">Digital Future.</span>
+          Websites &amp; Apps That<br />
+          <span className="headline-green">Grow Your Business.</span>
         </motion.h1>
 
         <motion.p
@@ -106,8 +102,13 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Diagonal bottom border */}
-      <div className="hero-diagonal" />
+      {/* SVG wave divider — replaces the 2018 diagonal clip-path */}
+      <div className="hero-diagonal" aria-hidden="true">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 80 C 360 20, 720 60, 1080 30 C 1260 15, 1380 40, 1440 20 L1440 80 Z"
+            fill="var(--dark-2)" />
+        </svg>
+      </div>
     </section>
   );
 }

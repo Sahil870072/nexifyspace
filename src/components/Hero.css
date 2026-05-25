@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   min-height: 100vh;
-  background: var(--dark);
+  background: #0A0A0A;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,26 +10,29 @@
   padding: 120px 24px 80px;
 }
 
-/* Ambient glow orbs — replaces particle canvas */
-.hero-glow-1 {
+/* Subtle dot-grid texture — replaces overused green glow blobs */
+.hero::before {
+  content: '';
   position: absolute;
-  top: -10%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(46, 204, 113, 0.13) 0%, transparent 65%);
+  inset: 0;
+  background-image: radial-gradient(rgba(46,204,113,0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
   pointer-events: none;
   z-index: 0;
 }
 
-.hero-glow-2 {
+/* Single subtle top glow — restrained, not two giant blobs */
+.hero::after {
+  content: '';
   position: absolute;
-  bottom: -20%;
-  right: -15%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(46, 204, 113, 0.06) 0%, transparent 70%);
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(circle, rgba(46,204,113,0.07) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -77,11 +80,11 @@
 .hero-headline {
   font-family: var(--font-display);
   font-size: clamp(56px, 9vw, 110px);
-  line-height: 1.05;
+  font-weight: 800;                    /* FIX: was not declared, now forces ExtraBold */
+  line-height: 1.02;
   color: var(--white);
-  letter-spacing: -1px;
+  letter-spacing: -0.03em;             /* em-relative, not hardcoded -1px */
   margin-bottom: 24px;
-  text-shadow: 0 0 80px rgba(0,0,0,0.5);
 }
 
 .headline-green {
@@ -152,14 +155,15 @@
   background: rgba(255,255,255,0.12);
 }
 
+/* Smooth wave divider — replaces the 2018 diagonal clip-path */
 .hero-diagonal {
   position: absolute;
   bottom: -2px;
   left: 0;
   right: 0;
   height: 80px;
-  background: var(--cream);
-  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  pointer-events: none;
+  z-index: 3;
 }
 
 @media (max-width: 768px) {
