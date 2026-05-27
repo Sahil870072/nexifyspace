@@ -51,48 +51,48 @@
   animation: trustScroll 28s linear infinite;
 }
 
+/* Pause scroll on hover */
+.trust-track-wrap:hover .trust-track {
+  animation-play-state: paused;
+}
+
 @keyframes trustScroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
 
-/* Individual client logo */
+/* Individual client logo slot */
 .client-logo {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 36px;
-  opacity: 0.42;
-  transition: opacity 0.25s;
-  cursor: default;
-  white-space: nowrap;
-  border-right: 1px solid rgba(255, 255, 255, 0.07);
-}
-.client-logo:hover { opacity: 0.72; }
-
-/* Lettermark — styled to look like a real brand mark */
-.client-logo-abbr {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 800;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 6px;
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  letter-spacing: -0.03em;
+  padding: 0 48px;
+  opacity: 0.55;
+  transition: opacity 0.3s;
+  cursor: default;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
   flex-shrink: 0;
 }
+.client-logo:hover { opacity: 1; }
 
-/* Full name next to mark */
-.client-logo-name {
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.02em;
+/* Logo image */
+.client-logo-img {
+  height: 80px;
+  max-width: 220px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.85);
+  transition: filter 0.35s ease, transform 0.3s ease;
+  display: block;
 }
+
+.client-logo:hover .client-logo-img {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.05);
+}
+
+/* Grace Salon logo is naturally smaller — boost it */
+.client-logo-img--grace-salon {
+  height: 110px;
+  max-width: 280px;
+}
+

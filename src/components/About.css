@@ -121,7 +121,7 @@
   z-index: 1;
 }
 
-.team-grid {
+.about-team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;

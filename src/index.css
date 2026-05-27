@@ -7,13 +7,16 @@
   --dark: #0A0A0A;
   --dark-2: #111111;
   --dark-3: #1a1a1a;
-  --white: #ffffff;
+  --white: #FBF5E6;
   --text-muted: rgba(255, 255, 255, 0.5);
 
   /* FIX: Three distinct font roles — not all Poppins */
-  --font-display: 'Bricolage Grotesque', sans-serif;  /* bold headings */
-  --font-body:    'Plus Jakarta Sans', sans-serif;     /* body, UI labels */
-  --font-nunito:  'Plus Jakarta Sans', sans-serif;     /* legacy alias */
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  /* bold headings */
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  /* body, UI labels */
+  --font-nunito: 'Plus Jakarta Sans', sans-serif;
+  /* legacy alias */
 }
 
 *,

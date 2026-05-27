@@ -81,7 +81,7 @@ export default function About() {
             <div className="about-img-placeholder">
               {/* Team visual */}
               <div className="team-graphic">
-                <div className="team-grid">
+                <div className="about-team-grid">
                   {Array.from({ length: 6 }).map((_, i) => (
                     <div key={i} className="team-avatar" style={{ animationDelay: `${i * 0.15}s` }}>
                       <span>{['TK', 'AS', 'MR', 'JP', 'SL', 'NB'][i]}</span>

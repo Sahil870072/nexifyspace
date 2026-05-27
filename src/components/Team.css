@@ -9,9 +9,11 @@
 .team::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(46,204,113,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.3), transparent);
 }
 
 /* Background glows */
@@ -26,27 +28,29 @@
 }
 
 .team-bg-glow--left {
-  background: radial-gradient(circle, rgba(46,204,113,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(46, 204, 113, 0.06) 0%, transparent 70%);
   top: -100px;
   left: -200px;
 }
 
 .team-bg-glow--right {
-  background: radial-gradient(circle, rgba(46,204,113,0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(46, 204, 113, 0.05) 0%, transparent 70%);
   bottom: -100px;
   right: -200px;
 }
 
-/* Container */
+/* Container — centred via auto margins */
 .team-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 900px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
   z-index: 1;
 }
 
-/* Header */
-.team-header {
+/* Header / Intro */
+.team-intro {
   text-align: center;
   margin-bottom: 72px;
 }
@@ -63,41 +67,44 @@
 .team-subtitle {
   font-family: var(--font-body);
   font-size: 18px;
-  color: rgba(255,255,255,0.45);
-  max-width: 480px;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 520px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-/* Cards grid */
+/* Cards grid — 2 col on all non-mobile viewports */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  max-width: 900px;
-  margin: 0 auto 64px;
+  gap: 16px;
+  width: 100%;
+  margin: 0 0 64px;
 }
 
 /* Individual card */
 .team-card {
   position: relative;
-  background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(46,204,113,0.03) 100%);
-  border: 1px solid rgba(46,204,113,0.15);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(46, 204, 113, 0.03) 100%);
+  border: 1px solid rgba(46, 204, 113, 0.15);
   border-radius: 28px;
   overflow: hidden;
   transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  /* Equal height & column layout fixes vertical misalignment */
+  display: flex;
+  flex-direction: column;
 }
 
 .team-card:hover {
-  border-color: rgba(46,204,113,0.4);
+  border-color: rgba(46, 204, 113, 0.4);
   transform: translateY(-8px);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(46,204,113,0.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(46, 204, 113, 0.08);
 }
 
 .card-glow-ring {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(46,204,113,0.08) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(46, 204, 113, 0.08) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
   opacity: 0;
@@ -112,7 +119,19 @@
 .card-photo-wrap {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+/* Glassmorphism gradient border frame */
+.card-photo-frame {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(46, 204, 113, 0.35) 0%, rgba(46, 204, 113, 0.08) 40%, rgba(255, 255, 255, 0.06) 100%);
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -131,14 +150,27 @@
 .card-photo-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(10,10,10,0.95) 100%);
+  background: linear-gradient(to bottom, transparent 50%, rgba(10, 10, 10, 0.95) 100%);
 }
 
-/* Card body */
+/* Card body — flex-grow fills remaining height so socials always at bottom */
 .card-body {
   padding: 28px 28px 32px;
   position: relative;
   z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Center-aligned variant */
+.card-body--center {
+  text-align: center;
+}
+
+.card-body--center .card-tags,
+.card-body--center .card-socials {
+  justify-content: center;
 }
 
 .card-role {
@@ -149,6 +181,10 @@
   text-transform: uppercase;
   color: var(--green);
   margin-bottom: 8px;
+  /* Stop role from wrapping and shifting content down */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-name {
@@ -163,17 +199,21 @@
 .card-bio {
   font-family: var(--font-body);
   font-size: 14px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   line-height: 1.7;
   margin-bottom: 20px;
+  /* Fixed height so both bios occupy same vertical space */
+  min-height: 96px;
 }
 
-/* Tags */
+/* Tags — wrap normally, min-height keeps both cards aligned */
 .card-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  min-height: 66px;
+  align-content: flex-start;
 }
 
 .card-tag {
@@ -181,8 +221,8 @@
   font-size: 11px;
   font-weight: 600;
   padding: 5px 12px;
-  background: rgba(46,204,113,0.08);
-  border: 1px solid rgba(46,204,113,0.2);
+  background: rgba(46, 204, 113, 0.08);
+  border: 1px solid rgba(46, 204, 113, 0.2);
   border-radius: 100px;
   color: var(--green);
   letter-spacing: 0.05em;
@@ -190,14 +230,16 @@
 }
 
 .card-tag:hover {
-  background: rgba(46,204,113,0.16);
-  border-color: rgba(46,204,113,0.4);
+  background: rgba(46, 204, 113, 0.16);
+  border-color: rgba(46, 204, 113, 0.4);
 }
 
-/* Socials */
+/* Socials — pinned to bottom of card via flex */
 .card-socials {
   display: flex;
   gap: 10px;
+  margin-top: auto;
+  padding-top: 4px;
 }
 
 .social-btn {
@@ -207,15 +249,15 @@
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
   transition: all 0.25s ease;
 }
 
 .social-btn:hover {
-  background: rgba(46,204,113,0.15);
+  background: rgba(46, 204, 113, 0.15);
   border-color: var(--green);
   color: var(--green);
   transform: translateY(-2px);
@@ -242,19 +284,30 @@
   text-align: center;
   font-family: var(--font-body);
   font-size: 13px;
-  color: rgba(255,255,255,0.2);
+  color: rgba(255, 255, 255, 0.2);
   letter-spacing: 0.1em;
 }
 
 /* ─── Responsive ──────────────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .team-grid {
     grid-template-columns: 1fr;
-    max-width: 420px;
   }
 
   .card-photo-wrap {
     height: 320px;
+  }
+
+  .card-bio {
+    min-height: unset;
+  }
+
+  .card-tags {
+    min-height: unset;
+  }
+
+  .card-role {
+    white-space: normal;
   }
 
   .team-title {

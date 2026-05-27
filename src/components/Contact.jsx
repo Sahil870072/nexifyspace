@@ -101,23 +101,6 @@ export default function Contact() {
     <section className="contact noise" id="contact" ref={ref}>
       <div className="contact-inner">
         {/* Header */}
-        <motion.div
-          className="contact-header"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="section-tag">Get In Touch</span>
-          <h2 className="contact-title">
-            Ready to Build Something
-            <br />
-            <span className="green">Extraordinary?</span>
-          </h2>
-          <p className="contact-sub">
-            Let's turn your vision into a digital reality. Drop us a message and we'll get back within 24 hours.
-          </p>
-        </motion.div>
-
         <div className="contact-body">
           {/* Left: contact info */}
           <motion.div

@@ -1,62 +1,44 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
+import { Monitor, Smartphone, LayoutDashboard, ShoppingCart, Palette } from 'lucide-react';
 import './Services.css';
 
 const services = [
   {
     num: '01',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect x="2" y="4" width="28" height="20" rx="3" stroke="#2ECC71" strokeWidth="2"/>
-        <path d="M10 28H22M16 24V28" stroke="#2ECC71" strokeWidth="2" strokeLinecap="round"/>
-        <path d="M8 12L12 16L8 20" stroke="#2ECC71" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M16 20H22" stroke="#2ECC71" strokeWidth="2" strokeLinecap="round"/>
-      </svg>
-    ),
-    title: 'Web Development',
-    desc: 'Blazing-fast, pixel-perfect websites and web apps built with modern stacks. React, Next.js, and beyond.',
+    Icon: Monitor,
+    title: 'Web Design',
+    desc: 'Modern high-converting websites built for growth. Pixel-perfect, fast, and crafted to make a lasting first impression.',
     rotate: '-1deg',
   },
   {
     num: '02',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="12" stroke="#2ECC71" strokeWidth="2"/>
-        <rect x="10" y="10" width="8" height="8" rx="2" stroke="#2ECC71" strokeWidth="1.5"/>
-        <path d="M20 12L26 8M20 20L26 24" stroke="#2ECC71" strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-    ),
-    title: 'UI/UX Design',
-    desc: 'Experiences that convert and delight. From wireframes to high-fidelity prototypes that wow.',
+    Icon: Smartphone,
+    title: 'App Development',
+    desc: 'Fast, scalable mobile and web applications. From concept to launch — built with modern stacks and clean architecture.',
     rotate: '1deg',
   },
   {
     num: '03',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <path d="M4 24L10 16L16 20L22 10L28 14" stroke="#2ECC71" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="10" cy="16" r="2" fill="#2ECC71"/>
-        <circle cx="16" cy="20" r="2" fill="#2ECC71"/>
-        <circle cx="22" cy="10" r="2" fill="#2ECC71"/>
-        <path d="M24 4L28 4L28 8" stroke="#2ECC71" strokeWidth="2" strokeLinecap="round"/>
-      </svg>
-    ),
-    title: 'SEO & Growth',
-    desc: 'Data-driven SEO strategies and growth hacking that puts you at the top of every search.',
+    Icon: LayoutDashboard,
+    title: 'Custom CRM',
+    desc: 'Tailored CRM systems designed around your workflow. Automate, track, and scale your operations with precision.',
     rotate: '-1deg',
   },
   {
     num: '04',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <path d="M6 8L16 4L26 8V16C26 22 20 27 16 28C12 27 6 22 6 16V8Z" stroke="#2ECC71" strokeWidth="2"/>
-        <path d="M12 14L15 17L20 12" stroke="#2ECC71" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-    title: 'Motion Design',
-    desc: 'Animations and micro-interactions that breathe life into your brand and stop the scroll.',
+    Icon: ShoppingCart,
+    title: 'E-Commerce',
+    desc: 'Conversion-focused online stores with seamless UX. From product page to checkout — optimised at every step.',
     rotate: '1.5deg',
+  },
+  {
+    num: '05',
+    Icon: Palette,
+    title: 'Brand Identity',
+    desc: 'Memorable visual identity that builds trust. Logo, colour system, typography — your brand in full clarity.',
+    rotate: '-0.5deg',
   },
 ];
 
@@ -77,24 +59,6 @@ export default function Services() {
   return (
     <section className="services" id="services">
       <div className="services-inner">
-        <motion.div
-          className="services-header"
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="section-tag">What We Do</span>
-          <h2 className="services-title">
-            Services Built for{' '}
-            <span className="green animated-underline" style={inView ? { '--w': '100%' } : {}}>
-              Impact
-            </span>
-          </h2>
-          <p className="services-sub">
-            We craft digital products that don't just look good — they grow businesses.
-          </p>
-        </motion.div>
 
         <div className="services-grid">
           {services.map((s, i) => (
@@ -105,10 +69,12 @@ export default function Services() {
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
               variants={cardVariants}
-              whileHover={{ rotate: '0deg', y: -6, boxShadow: '0 20px 60px rgba(46,204,113,0.15)' }}
+              whileHover={{ rotate: '0deg', y: -6, boxShadow: '0 24px 60px rgba(46,204,113,0.18)' }}
             >
               <div className="service-num">{s.num}</div>
-              <div className="service-icon">{s.icon}</div>
+              <div className="service-icon">
+                <s.Icon size={28} strokeWidth={1.7} color="#2ECC71" />
+              </div>
               <h3 className="service-name">{s.title}</h3>
               <p className="service-desc">{s.desc}</p>
               <Link to="/contact" className="service-link">

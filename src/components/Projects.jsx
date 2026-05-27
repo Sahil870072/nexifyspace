@@ -48,21 +48,7 @@ export default function Projects() {
   return (
     <section className="projects noise" id="projects">
       <div className="projects-inner" ref={ref}>
-        <motion.div
-          className="projects-header"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="section-tag" style={{ color: 'var(--green)' }}>Our Work</span>
-          <h2 className="projects-title">
-            Projects That{' '}
-            <span className="green">Define Eras.</span>
-          </h2>
-          <p className="projects-sub">
-            Six bold builds that moved the needle for ambitious brands.
-          </p>
-        </motion.div>
+
 
         <div className="projects-grid">
           {projects.map((p, i) => (

@@ -48,14 +48,24 @@ export default function Hero() {
         > */}
         {/* </motion.div> */}
 
+        <motion.div
+          className="hero-eyebrow"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <span className="eyebrow-dot" />
+          Creative Agency · Design & Development
+        </motion.div>
+
         <motion.h1
           className="hero-headline"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.7 }}
         >
-          Websites &amp; Apps That<br />
-          <span className="headline-green">Grow Your Business.</span>
+          The space where<br />
+          <span className="headline-green">brands grow.</span>
         </motion.h1>
 
         <motion.p
@@ -64,8 +74,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55 }}
         >
-          Creating Growth Engines for bold brands &amp; ambitious startups.<br />
-          Bold design. Cutting-edge dev. Real results.
+          We help ambitious brands establish a powerful digital presence<br />
+          through strategy, design, and development.
         </motion.p>
 
         <motion.div
